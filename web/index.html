@@ -1,0 +1,2932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust Adventures - Premium Travel Experience</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+   
+   <link rel="preload" as="image" href="https://images.unsplash.com/photo-1507525428034-b723cf961d3e">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.css">
+    <style>
+        :root {
+    /* Updated with new ColorHunt palette */
+    --primary-color: #80CBC4;
+    --primary-gradient: linear-gradient(135deg, #80CBC4 0%, #B4EBE6 100%);
+    
+    --secondary-color: #B4EBE6;
+    --secondary-gradient: linear-gradient(135deg, #B4EBE6 0%, #FBF8EF 100%);
+    
+    --accent-color: #FFB433;
+    
+    --text-dark: #2d3748; /* keeps good readability */
+    --text-light: #718096; /* subtle secondary text */
+    
+    --bg-light: #FBF8EF;
+    --bg-glass: rgba(251, 248, 239, 0.15);
+    
+    --shadow-light: 0 8px 32px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 15px 35px rgba(0, 0, 0, 0.15);
+    
+    --border-radius: 15px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--bg-light); /* Added to match new theme */
+    overflow-x: hidden;
+}
+
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+       
+html, body {
+  width: 100% !important;
+  min-height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden !important; /* stop horizontal scroll */
+}
+
+        
+
+        .nav-links .dropdown {
+    position: relative;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    min-width: 180px;
+    display: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    border-radius: 5px;
+    z-index: 999;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.dropdown-menu li a:hover {
+    background: #f0f0f0;
+}
+
+/* Desktop: show dropdown on hover */
+@media (min-width: 769px) {
+    .nav-links .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+}
+
+/* Mobile: show dropdown when .open class is added */
+@media (max-width: 768px) {
+    .dropdown {
+        position: relative; /* make sure dropdown stays inside nav */
+    }
+
+    .dropdown-menu {
+        position: static;  /* so it stacks under About */
+        box-shadow: none;  /* cleaner look on mobile */
+        border-radius: 0;
+        min-width: 100%;   /* full width for touch */
+    }
+
+    .dropdown.open .dropdown-menu {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        background: white;
+        position: fixed;          /* ✅ not tied to .navbar anymore */
+        top: 0;                   /* ✅ always at top */
+        left: 0;
+        width: 100%;
+        height: 100vh;            /* ✅ full screen */
+        padding: 20px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        z-index: 9999;
+        transform: translateY(-100%);
+        opacity: 0;               /* ✅ hidden instantly */
+        pointer-events: none;     /* ✅ prevent clicks when hidden */
+        transition: transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
+        display: flex;
+    }
+    
+
+    .nav-links.show {
+        transform: translateY(0);  /* ✅ slide in instantly */
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .mobile-menu {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+        z-index: 10000; /* ✅ stays above */
+        position: relative;
+    }
+
+    .mobile-menu span {
+        width: 25px;
+        height: 3px;
+        background: #333;
+        transition: all 0.3s ease;
+    }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .dropdown-menu {
+        position: static;
+        box-shadow: none;
+    }
+    .dropdown-menu.show {
+        display: block;
+    }
+}
+/* Navbar */
+        .navbar {
+            position: fixed;
+            top: 35px;
+            left: 0;
+            right: 0;
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(25px);
+            box-shadow: var(--shadow-light);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        
+      .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 24px;
+  font-weight: 700;
+  animation: logoFloat 3s ease-in-out infinite;
+  /* remove gradient from the container — gradient applied only to .logo-text below */
+}
+
+.logo i {
+  color: #000;            /* icon black */
+  font-size: 24px;
+  line-height: 1;
+  flex: 0 0 auto;
+}
+
+/* gradient text for the word "Wanderlust" */
+.logo .logo-text {
+color: #000;  
+}
+
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            position: relative;
+            padding: 8px 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::before {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .mobile-menu.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        @media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        background: white;
+        position: absolute;
+        top: 50px; /* Start below top bar */
+        left: 0;
+        width: 100%;
+        height: 50vh; /* Half page */
+        padding: 20px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        z-index: 999;
+        transition: transform 0.3s ease-in-out;
+        transform: translateY(-100%);
+    }
+
+
+    .nav-links.show {
+        display: flex;
+        transform: translateY(0);
+    }
+
+    /* Hamburger animation (close button effect) */
+    .mobile-menu.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    .mobile-menu.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .mobile-menu.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .mobile-menu {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+        z-index: 1000;
+        position: relative;
+    }
+    
+    .mobile-menu span {
+        width: 25px;
+        height: 3px;
+        background: #333;
+        transition: all 0.3s ease;
+    }
+}
+
+        /* Hero Section */
+ /* Hero Section */
+
+.hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    background-color: var(--bg-light);
+    overflow: hidden;
+    padding: 0 20px;
+    transform: none !important;
+
+    /* Slightly brighter overlay */
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.35)),
+
+        url('images/background.jpeg');
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+
+
+/* Content */
+/* Content */
+.hero-content {
+    max-width: 800px;
+    animation: heroFadeIn 1.2s ease-out;
+}
+
+@keyframes heroFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+     color: #ffffff;  
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+   
+     color: #ffffff;  
+    opacity: 0.85;
+} 
+
+/* Search Bar - Professional Look */
+.search-container {
+    background: #fff;
+    border-radius: var(--border-radius);
+    padding: 15px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    border: 1px solid #e0e0e0;
+}
+
+.search-field {
+    flex: 1;
+    min-width: 200px;
+     position: relative;
+}
+
+.search-field input::before {
+    content: "Date"; /* Heading text */
+    position: absolute;
+    top: -5px; /* Adjust distance above the input */
+    left: 0;
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--text-dark);
+}
+.search-field input,
+.search-field select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 30px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+     font-weight: bold;
+    color: var(--text-dark);
+    background: #fff;
+    transition: border-color 0.2s ease;
+}
+
+.search-field input:focus,
+.search-field select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+
+
+.search-btn {
+    background: var(--primary-gradient);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    min-width: 120px;
+    text-decoration: none; /* Removes underline for <a> links */
+    display: inline-block; /* Makes <a> behave like a button */
+    text-align: center; /* Centers text */
+}
+
+.search-btn:hover {
+    transform: translateY(-2px);
+    /* Optional: add hover gradient effect */
+     background-color: #128e8a;
+}
+
+
+        /* Floating Elements */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-elements::before,
+        .floating-elements::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-elements::before {
+            width: 60px;
+            height: 60px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-elements::after {
+            width: 80px;
+            height: 80px;
+            top: 70%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fff;
+  color: #333;
+}
+
+/* Section Layout */
+.about-hero {
+  padding: 120px 5%;
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Left Text Side */
+.about-text {
+  flex: 1 1 40%;
+}
+
+.about-text h1 {
+  font-size: 3rem;                        /* match section-header h2 */
+  margin-bottom: 20px;
+
+  background: var(--primary-gradient);    /* gradient applied */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+
+.about-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: #555;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 12px 25px;
+  background: var(--primary-gradient);
+  color: white;
+  font-weight: 600;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  background-color: #128e8a;
+}
+
+/* Right Images Layout */
+.about-images {
+  flex: 1 1 50%;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  position: relative;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  padding-top: 20px;
+}
+
+/* Shape Styling */
+.shape {
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Shape Sizes */
+.shape.small, .shape.medium, .shape.large {
+  width: 230px;
+  height: 280px;
+}
+
+/* Wave-like Arrangement */
+.shape.small { align-self: flex-end; }
+.shape.medium:first-of-type { align-self: center; }
+.shape.medium:last-of-type { align-self: flex-start; }
+.shape.large { align-self: flex-start; }
+
+/* Overlap effect */
+.about-images > .shape {
+  margin-left: -40px;
+}
+
+/* Floating Animation */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+.about-images .shape {
+  animation: float 4s ease-in-out infinite;
+}
+
+.about-images .shape:hover {
+  transform: scale(1.1) translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  z-index: 10;
+}
+
+/* Animation delays */
+.shape.small { animation-delay: 0s; }
+.shape.medium:first-of-type { animation-delay: 0.5s; }
+.shape.medium:last-of-type { animation-delay: 1s; }
+.shape.large { animation-delay: 1.5s; }
+
+/* Show only 3 images on desktop (hide the last one) */
+@media (min-width: 769px) {
+  .about-images .shape:last-of-type {
+    display: none;
+  }
+}
+/* Mobile Responsive About Images */
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .about-images {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    overflow: visible;
+    padding-top: 10px;
+    margin: 0 auto;
+  }
+
+  /* Adjust image sizes */
+  .shape.small, .shape.medium, .shape.large {
+    width: 160px;
+    height: 160px;
+    margin-left: 0;
+    border-width: 3px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+  }
+
+  .about-images .shape {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Slight rotation for more dynamic effect */
+  .shape.small { transform: rotate(-5deg); }
+  .shape.medium:first-of-type { transform: rotate(3deg); }
+  .shape.medium:last-of-type { transform: rotate(-2deg); }
+  .shape.large { transform: rotate(4deg); }
+}
+
+@media (max-width: 480px) {
+  .shape.small, .shape.medium, .shape.large {
+    width: 160px;
+    height: 160px;
+    border-width: 2px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+
+  .shape.small { transform: rotate(-3deg); }
+  .shape.medium:first-of-type { transform: rotate(2deg); }
+  .shape.medium:last-of-type { transform: rotate(-2deg); }
+  .shape.large { transform: rotate(3deg); }
+}
+
+@media (max-width: 360px) {
+  .shape.small, .shape.medium, .shape.large {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #fff;
+    color: #333;
+}
+
+.tours-section {
+    padding: 30px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.tours-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.tours-header h2 {
+    font-size: 28px;
+    margin: 0;
+}
+
+.tours-header p {
+    margin: 5px 0 0;
+    color: #777;
+}
+
+.tours-nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tours-nav a {
+    color: rgb(96, 184, 190);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-btn {
+    background: none;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+/* Tours container */
+.tours-container {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+}
+
+.tours-container::-webkit-scrollbar {
+    display: none;
+}
+
+.tour-card {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    position: relative;
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    width: 280px; /* default card width */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tour-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.tour-card:hover img {
+    transform: scale(1.05);
+}
+
+.heart {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: white;
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: gray;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.heart.liked {
+    color: red;
+}
+
+.tour-card h3 {
+    font-size: 16px;
+    padding: 10px;
+    margin: 0;
+}
+
+.tour-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+.expanded-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 20px auto;
+    transition: all 0.3s ease-in-out;
+}
+
+.rating {
+    color: red;
+}
+
+.price {
+    font-weight: bold;
+    color: #000;
+}
+
+/* Hover effect for tour cards */
+.tour-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    z-index: 5;
+}
+
+/* Tours header on small devices */
+@media (max-width: 768px) {
+    .tours-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .tours-header div:first-child {
+        width: 100%;
+    }
+
+    .tours-header p {
+        margin-top: 5px;
+    }
+
+    .tours-nav {
+        align-self: flex-start;
+        display: flex;
+        gap: 10px;
+        flex-wrap: nowrap;
+    }
+}
+
+/* Mobile smaller devices */
+@media (max-width: 480px) {
+    .tour-card {
+        width: 100%;
+        max-width: 150%;
+    }
+    .tour-card img {
+        height: 300px;
+    }
+    .tour-info {
+        padding: 0 15px 10px;
+    }
+    .heart {
+        top: 10px;
+        right: 10px;
+    }
+}
+
+/* Extra small phones */
+@media (max-width: 360px) {
+    .tour-card img {
+        height: 180px;
+    }
+}
+
+/* Large screens: 3 cards per view */
+@media (min-width: 992px) {
+    .tour-card {
+        width: calc((100% - 40px) / 3); /* 3 cards with 20px gap each */
+        min-width: auto;
+    }
+}
+
+/* Medium screens: 2 cards per view */
+@media (min-width: 768px) and (max-width: 991px) {
+    .tour-card {
+        width: calc((100% - 20px) / 2); /* 2 cards with 20px gap */
+    }
+}
+
+/* Small screens: 1 card per view */
+@media (max-width: 767px) {
+    .tour-card {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+
+ 
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #fff;
+}
+
+.testimonial-section {
+  background: #fff; /* White background for the box */
+  border: 3px solid #8cd0d4; /* Blue border */
+  border-radius: 25px; /* Curve the corners */
+  padding: 70px;
+  max-width: 1100px; /* Keep it centered and neat */
+  margin: 50px auto; /* Center it horizontally */
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.1); /* Soft shadow */
+  transition: all 0.3s ease-in-out;
+}
+
+.testimonial-container {
+  max-width: 1200px;
+  margin: 40px;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap; /* ✅ allows stacking on smaller screens */
+}
+
+.testimonial-left {
+  flex: 1;
+}
+
+.section-label {
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #444;
+}
+
+.testimonial-left h2 {
+  font-size: 36px;
+  margin: 10px 0;
+}
+
+.trustpilot {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.trustpilot img {
+  height: 25px;
+}
+
+.testimonial-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.testimonial-image img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.testimonial-right {
+  flex: 2;
+}
+
+.stars {
+  font-size: 20px;
+  color: orange;
+  margin-bottom: 10px;
+}
+
+.reviewer {
+  font-size: 14px;
+  color: #555;
+}
+
+.arrows {
+  margin-top: 15px;
+}
+
+.arrows button {
+  background: white;
+  border: 1px solid #ccc;
+  padding: 8px 14px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 5px;
+  border-radius: 50%;
+}
+
+.arrows button:hover {
+  background: #ddd;
+}
+
+/* ✅ RESPONSIVE DESIGN */
+
+/* Tablet screens */
+@media (max-width: 992px) {
+  .testimonial-section {
+    padding: 40px;
+  }
+
+  .testimonial-container {
+    gap: 30px;
+  }
+
+  .testimonial-left h2 {
+    font-size: 28px;
+  }
+}
+
+/* Mobile screens */
+@media (max-width: 768px) {
+  .testimonial-section {
+    padding: 30px 20px;
+    margin: 30px 15px;
+  }
+
+  .testimonial-container {
+    flex-direction: column; /* stack vertically */
+    text-align: center;
+    gap: 20px;
+  }
+
+  .testimonial-left h2 {
+    font-size: 24px;
+  }
+
+  .testimonial-image img {
+    max-width: 220px;
+  }
+
+  .testimonial-right {
+    flex: 1;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .testimonial-section {
+    padding: 20px 15px;
+    border-radius: 15px;
+  }
+
+  .testimonial-left h2 {
+    font-size: 20px;
+    line-height: 1.3;
+  }
+
+  .section-label {
+    font-size: 12px;
+  }
+
+  .testimonial-image img {
+    max-width: 180px;
+  }
+
+  .stars {
+    font-size: 16px;
+  }
+
+  .reviewer {
+    font-size: 12px;
+  }
+
+  .arrows button {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+}  
+/* Body & Fonts */
+body {
+  font-family: Arial, sans-serif;
+  background: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+/* Section Header */
+.section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-header h2 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.section-header p {
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Card Wrapper & Grid */
+.card-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Activity Card */
+.activity-card {
+  background: #f9f9f9;
+  border-radius: 20px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 400px; /* Fixed height for uniform cards */
+  
+}
+
+.activity-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Card Image & Sale Tag */
+/* Card Image Container with Subtle Blue Background */
+.card-image {
+  position: relative;
+  height: 200px; /* Fixed image height */
+  overflow: hidden;
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  background: #e6f2ff; /* Subtle light blue behind the curve */
+}
+
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Sale Tag Positioned Relative to Card, Not Image */
+
+.sale-tag {
+  position: absolute;
+  top: 10px;   /* distance from top of card */
+  right: 10px; /* distance from right of card */
+  z-index: 2;
+  background: red;
+  color: white;
+  padding: 5px 8px;
+  font-size: 12px;
+  border-radius: 3px;
+}
+
+
+/* Card Content */
+.card-content {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+/* Price & Rating Row */
+.price-rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.price-rating .price {
+  color: #00aaff; /* Light blue */
+  font-weight: bold;
+}
+
+.price-rating .rating {
+  color: #000; /* Black */
+  font-weight: bold;
+}
+
+/* Heading */
+.activity-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/* Location & Book Button Row */
+.location-book {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto; /* Push to bottom */
+}
+
+/* Location Text */
+.location-book .location {
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+/* Book Button */
+/* Book Button */
+.book-btn {
+  background-color: #9ccee5; /* Light blue */
+  color: white;
+  border: none;
+  padding: 7px 15px; /* padding left/right instead of fixed width */
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+  text-align: center;
+  white-space: nowrap; /* prevent wrapping text */
+}
+
+.book-btn:hover {
+  background-color: #0088cc;
+}
+
+/* Responsive adjustment for very small devices */
+@media (max-width: 576px) {
+  .book-btn {
+    padding: 7px 12px; /* slightly smaller padding */
+    font-size: 0.9rem; /* smaller text */
+  }
+}
+
+
+
+/* Responsive */
+@media (max-width: 992px) {
+  .card-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .card-wrapper {
+    grid-template-columns: 1fr;
+  }
+  .location-book {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  .book-btn {
+    width: 100%;
+  }
+}
+
+
+/* Section Styles */
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            background: var(--primary-gradient);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: var(--transition);
+        }
+
+        .card:hover .card-image::before {
+            left: 100%;
+        }
+
+        .card-content {
+            padding: 30px;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .card p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .card-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary-gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Price Filter */
+        .price-filter {
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            margin-bottom: 40px;
+        }
+
+        .filter-row {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .filter-group input, .filter-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .filter-group input:focus, .filter-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        /* Range Slider */
+        .range-slider {
+            position: relative;
+            margin: 20px 0;
+        }
+
+        .range-slider input[type="range"] {
+            width: 100%;
+            -webkit-appearance: none;
+            appearance: none;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        .range-slider input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        /* Counter Animation */
+        .stats-section {
+            background: var(--primary-gradient);
+            color: white;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Swiper Carousel */
+        .testimonials-carousel {
+            padding: 40px 0;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            text-align: center;
+            margin: 20px;
+        }
+
+        .testimonial-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--primary-gradient);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        /* Progress Bar */
+ 
+
+        .progress-section {
+            background: #f8fafc;
+            
+        }
+
+        .progress-item {
+            margin-bottom: 30px;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background: #e2e8f0;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary-gradient);
+            border-radius: 5px;
+            width: 0;
+            transition: width 2s ease-out;
+        }
+
+        /* Forms */
+       /* Contact Form */
+.contact-form {
+  background: white;
+  padding: 40px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-light);
+  max-width: 800px; /* Prevents it from stretching too wide */
+  margin: 0 auto;   /* Centers form */
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .contact-form {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-form {
+    padding: 20px;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    font-size: 15px;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-form {
+    padding: 15px;
+    border-radius: 8px;
+  }
+
+  .form-group label {
+    font-size: 14px;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #a0aec0;
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #4a5568;
+            color: #a0aec0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .search-container {
+                flex-direction: column;
+            }
+
+            .filter-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+
+        /* Custom Animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in-up.aos-animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in-left.aos-animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in-right.aos-animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.8s ease-out;
+        }
+
+        .scale-in.aos-animate {
+            opacity: 1;
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+
+
+    <!-- Navbar -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+       <div class="logo">
+  <i class="fas fa-compass" aria-hidden="true"></i>
+  <span class="logo-text">Wanderlust</span>
+</div>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+
+            <!-- About Dropdown -->
+            <li class="dropdown">
+                <a href="#about">About <i class="fas fa-caret-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#policies">Policies</a></li>
+                </ul>
+            </li>
+
+            <li><a href="#tours">Explore Tours</a></li>
+            <li><a href="#packages">Packages</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <!-- Mobile menu button -->
+        <div class="mobile-menu" id="mobileMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</nav>
+
+    <!-- Hero Section -->
+   <section id="home" class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="floating-elements"></div>
+    <div class="hero-content">
+        <h1>Discover Amazing Places</h1>
+        <p>Experience the world like never before with our premium travel packages and unforgettable adventures.</p>
+        
+        <!-- Single Explore Tour button using the same class -->
+       <a href="#tours" class="search-btn">Explore Tour</a>
+
+</section>
+
+    
+    <!-- About Section -->
+  <section class="about-hero" id="about">
+  <div class="about-container">
+    <!-- Left Content -->
+    <div class="about-text">
+      <h1>Welcome to Wanderlust.</h1>
+      <p>
+        We believe that travel is more than just visiting places – it’s about creating memories, exploring cultures, and discovering yourself. Our mission is to inspire and guide every adventurer to experience the world in a unique and unforgettable way. Join us and start your journey today!
+      </p>
+     <a href="#contact" class="search-btn">Contact</a>
+    </div>
+
+    <!-- Right Images -->
+    <div class="about-images">
+      <img src="images/image1.jpg" class="shape small" alt="">
+      <img src="images/image2.jpg" class="shape medium" alt="">
+      <img src="images/image3.jpg" class="shape medium" alt="">
+      <img src="images/image4.jpg" class="shape large" alt="">
+    </div>
+
+  </div>
+</section>
+
+
+    <!-- Stats Section -->
+    <section class="section stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item" data-aos="scale-in" data-aos-delay="100">
+                    <span class="stat-number" data-count="50000">0</span>
+                    <span class="stat-label">Happy Travelers</span>
+                </div>
+                <div class="stat-item" data-aos="scale-in" data-aos-delay="200">
+                    <span class="stat-number" data-count="150">0</span>
+                    <span class="stat-label">Destinations</span>
+                </div>
+                <div class="stat-item" data-aos="scale-in" data-aos-delay="300">
+                    <span class="stat-number" data-count="25">0</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+                <div class="stat-item" data-aos="scale-in" data-aos-delay="400">
+                    <span class="stat-number" data-count="98">0</span>
+                    <span class="stat-label">% Satisfaction</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tours Section -->
+<!-- Tours Section -->
+<section id="tours" class="section">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Explore Tours</h2>
+            <p>Discover our most popular destinations and create memories that last a lifetime.</p>
+        </div>
+        
+        <!-- Price Filter -->
+        <div class="price-filter" data-aos="fade-up">
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label>Destination</label>
+                    <select id="filterDestination">
+                        <option value="">All Destinations</option>
+                        <option value="paris">Paris, France</option>
+                        <option value="tokyo">Tokyo, Japan</option>
+                        <option value="bali">Bali, Indonesia</option>
+                        <option value="rome">Rome, Italy</option>
+                        <option value="dubai">Dubai, UAE</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Duration</label>
+                    <select id="filterDuration">
+                        <option value="">Any Duration</option>
+                        <option value="1-3">1-3 Days</option>
+                        <option value="4-7">4-7 Days</option>
+                        <option value="8-14">8-14 Days</option>
+                        <option value="15+">15+ Days</option>
+                    </select>
+                </div>
+                 <div class="search-field">
+                    <input type="date" id="checkin">
+                </div>
+                <div class="filter-group">
+                    <label>Price Range: $<span id="priceValue">500-2000</span></label>
+                    <div class="range-slider">
+                        <input type="range" id="priceRange" min="100" max="5000" value="2000">
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <button class="btn" onclick="applyFilters()">Search</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="tours-section">
+            <div class="tours-header">
+                <div>
+                    <h2>Explore Popular Tours</h2>
+                    <p>Get started with handpicked top rated trips.</p>
+                </div>
+                <div class="tours-nav">
+                    <a href="#">View All Tours</a>
+                    <button class="nav-btn" id="prevBtn">&#8592;</button>
+                    <button class="nav-btn" id="nextBtn">&#8594;</button>
+                </div>
+            </div>
+
+            <div class="tours-wrapper">
+                <div class="tours-container" id="tourList">
+                    
+                    <div class="tour-card" data-destination="paris" data-duration="4-7" data-price="39">
+                        <img src="images/ex1.avif" alt="Tour 1">
+                        <div class="heart">&#9829;</div>
+                        <h3>Guided Sightseeing Tour</h3>
+                        <div class="tour-info">
+                            <span class="rating">&#9733; 5 (5)</span>
+                            <span class="price">from $700</span>
+                        </div>
+                    </div>
+
+                    <div class="tour-card" data-destination="dubai" data-duration="1-3" data-price="25">
+                        <img src="images/ex2.avif" alt="Tour 2">
+                        <div class="heart">&#9829;</div>
+                        <h3>Sea Life Centre Ticket</h3>
+                        <div class="tour-info">
+                            <span class="rating">&#9733; 5 (5)</span>
+                            <span class="price">from $600</span>
+                        </div>
+                    </div>
+
+                    <div class="tour-card" data-destination="bali" data-duration="8-14" data-price="40">
+                        <img src="images/ex5.avif" alt="Tour 3">
+                        <div class="heart">&#9829;</div>
+                        <h3>Highland Lochs & Castles</h3>
+                        <div class="tour-info">
+                            <span class="rating">&#9733; 5 (5)</span>
+                            <span class="price">from $550</span>
+                        </div>
+                    </div>
+
+                    <div class="tour-card" data-destination="tokyo" data-duration="4-7" data-price="218">
+                        <img src="images/ex6.avif" alt="Tour 4">
+                        <div class="heart">&#9829;</div>
+                        <h3>Sunset Beach Cruise</h3>
+                        <div class="tour-info">
+                            <span class="rating">&#9733; 5 (5)</span>
+                            <span class="price">from $800</span>
+                        </div>
+                    </div>
+
+                    <div class="tour-card" data-destination="rome" data-duration="15+" data-price="55">
+                        <img src="images/ex3.avif" alt="Tour 5">
+                        <div class="heart">&#9829;</div>
+                        <h3>Mountain Adventure</h3>
+                        <div class="tour-info">
+                            <span class="rating">&#9733; 0 (0)</span>
+                            <span class="price">from $650</span>
+                        </div>
+                    </div>
+
+                    <div class="tour-card" data-destination="paris" data-duration="1-3" data-price="45">
+                        <img src="images/ex4.avif" alt="Tour 6">
+                        <div class="heart">&#9829;</div>
+                        <h3>City Lights Night Tour</h3>
+                        <div class="tour-info">
+                            <span class="rating">&#9733; 5 (5)</span>
+                            <span class="price">from $700</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Packages Section -->
+<!-- Packages Section -->
+<section id="packages" class="section" style="background: #f8fafc; padding-top: 20px; margin-top: 0;">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <h2>Travel Packages</h2>
+      <p>Choose from our carefully crafted packages designed for every type of traveler.</p>
+    </div>
+    <div class="card-wrapper">
+
+      <!-- Card 1 -->
+      <div class="activity-card">
+        <span class="sale-tag">SALE</span>
+        <div class="card-image">
+          <img src="images/pakage1.avif" alt="Relaxation Tours">
+          
+        </div>
+        <div class="card-content">
+          <div class="price-rating">
+            <span class="price">$1499</span>
+            <span class="rating">⭐ 4.8</span>
+          </div>
+          <h3>Luxury Tours</h3>
+          <div class="location-book">
+            <span class="location">Bali, Indonesia</span>
+             <a href="#contact" class="book-btn">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="activity-card">
+        <span class="sale-tag">SALE</span>
+        <div class="card-image">
+          <img src="images/package2.avif" alt="Cultural & Thematic Tours">
+        </div>
+        <div class="card-content">
+          <div class="price-rating">
+            <span class="price">$1199</span>
+            <span class="rating">⭐ 4.7</span>
+          </div>
+          <h3>City Explorer</h3>
+          <div class="location-book">
+            <span class="location">Rome, Italy</span>
+            <a href="#contact" class="book-btn">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="activity-card">
+        <span class="sale-tag">SALE</span>
+        <div class="card-image">
+          <img src="images/package4.avif" alt="Family Friendly Tours">
+        </div>
+        <div class="card-content">
+          <div class="price-rating">
+            <span class="price">$1299</span>
+            <span class="rating">⭐ 4.9</span>
+          </div>
+          <h3>Family Friendly Tours</h3>
+          <div class="location-book">
+            <span class="location">Orlando, USA</span>
+           <a href="#contact" class="book-btn">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="activity-card">
+        <span class="sale-tag">SALE</span>
+        <div class="card-image">
+          <img src="images/pakage4.avif" alt="Outdoor Activities">
+
+        </div>
+        <div class="card-content">
+          <div class="price-rating">
+            <span class="price">$1179</span>
+            <span class="rating">⭐ 4.9</span>
+          </div>
+          <h3>Outdoor Activities</h3>
+          <div class="location-book">
+    <span class="location">Swiss Alps, Switzerland</span>
+    <a href="#contact" class="book-btn">Book Now</a>
+</div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+    <!-- Progress Section -->
+    <section id="services" class="section progress-section" style="background: #f8fafc; padding-top: 20px; margin-top: 0;">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Why Choose Us</h2>
+            <p>Our commitment to excellence reflected in our performance metrics.</p>
+        </div>
+            <div style="max-width: 600px; margin: 0 auto;">
+                <div class="progress-item" data-aos="fade-right" data-aos-delay="100">
+                    <div class="progress-label">
+                        <span>Customer Satisfaction</span>
+                        <span>98%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="98"></div>
+                    </div>
+                </div>
+                
+                <div class="progress-item" data-aos="fade-right" data-aos-delay="200">
+                    <div class="progress-label">
+                        <span>On-Time Performance</span>
+                        <span>95%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="95"></div>
+                    </div>
+                </div>
+                
+                <div class="progress-item" data-aos="fade-right" data-aos-delay="300">
+                    <div class="progress-label">
+                        <span>Repeat Customers</span>
+                        <span>87%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="87"></div>
+                    </div>
+                </div>
+                
+                <div class="progress-item" data-aos="fade-right" data-aos-delay="400">
+                    <div class="progress-label">
+                        <span>Global Coverage</span>
+                        <span>92%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="92"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- Reviews Section -->
+
+  <section id="reviews" class="testimonial-section">
+  <div class="testimonial-container">
+    <!-- Left Section -->
+    <div class="testimonial-left">
+      <p class="section-label">REVIEWS </p>
+      <h2>The Voice of Our<br>Happy Customers?</h2>
+      <div class="trustpilot">
+     
+        <p>Average rating <strong>4.9/5</strong> from <strong>597</strong> reviews</p>
+      </div>
+    </div>
+
+    <!-- Middle Image -->
+    <div class="testimonial-image">
+      <img id="review-image" src="images/review.jpeg" alt="Happy Customer" width="250">
+    </div>
+
+    <!-- Right Section -->
+    <div class="testimonial-right">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p id="review-text">
+        Best vacation ever—smooth plans and perfect travel!
+      </p>
+      <p class="reviewer">
+        <strong id="review-name">John Doe</strong><br>
+        <span id="review-title">CEO, Markh e</span>
+      </p>
+
+      <!-- Arrows -->
+      <div class="arrows">
+        <button id="prev-review">&#8592;</button>
+        <button id="next-review">&#8594;</button>
+      </div>
+    </div>
+  </div> 
+</section>
+    <!-- Contact Section -->
+    <section id="contact" class="section" style="background: #f8fafc; padding-top: 20px; margin-top: 0;">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Contact Us</h2>
+                <p>Get in touch with our travel experts to plan your next adventure.</p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 50px;">
+                <div data-aos="fade-right">
+                    <div class="contact-form">
+                        <h3 style="margin-bottom: 30px;">Send us a Message</h3>
+                        <form>
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" placeholder="Enter your full name">
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" placeholder="Enter your email">
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type="tel" placeholder="Enter your phone">
+                            </div>
+                            <div class="form-group">
+                                <label>Destination Interest</label>
+                                <select>
+                                    <option>Select a destination</option>
+                                    <option>Europe Tours</option>
+                                    <option>Asia Adventures</option>
+                                    <option>Tropical Getaways</option>
+                                    <option>City Breaks</option>
+                                    <option>Cultural Experiences</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Message</label>
+                                <textarea rows="5" placeholder="Tell us about your dream trip..."></textarea>
+                            </div>
+                            <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div data-aos="fade-left">
+                    <div class="contact-form">
+                        <h3 style="margin-bottom: 30px;">Get in Touch</h3>
+                        <div style="space-y: 20px;">
+                            <div style="display: flex; align-items: center; margin-bottom: 25px;">
+                                <div style="width: 50px; height: 50px; background: var(--primary-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; margin-right: 20px;">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h4>Visit Us</h4>
+                                    <p style="color: var(--text-light); margin: 0;">123 Travel Street, Karachi, Pakistan</p>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center; margin-bottom: 25px;">
+                                <div style="width: 50px; height: 50px; background: var(--primary-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; margin-right: 20px;">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h4>Call Us</h4>
+                                    <p style="color: var(--text-light); margin: 0;">+92-21-1234-5678</p>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center; margin-bottom: 25px;">
+                                <div style="width: 50px; height: 50px; background: var(--primary-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; margin-right: 20px;">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4>Email Us</h4>
+                                    <p style="color: var(--text-light); margin: 0;">info@wanderlust.com</p>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center; margin-bottom: 25px;">
+                                <div style="width: 50px; height: 50px; background: var(--primary-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; margin-right: 20px;">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h4>Office Hours</h4>
+                                    <p style="color: var(--text-light); margin: 0;">Mon-Fri: 9AM-7PM<br>Sat-Sun: 10AM-5PM</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                       
+                                <!-- Google Map Embed -->
+    <div style="margin-top: 30px; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3620.123456789!2d67.030123456!3d24.860123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33f123456789%3A0xabcdef123456789!2s123%20Travel%20Street%2C%20Karachi%2C%20Pakistan!5e0!3m2!1sen!2s!4v1692101234567!5m2!1sen!2s"
+            width="100%"
+            height="320"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+                         </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Policies Section -->
+    <section id="policies" class="section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Our Policies</h2>
+                <p>Transparent and fair policies to ensure your peace of mind while traveling with us.</p>
+            </div>
+            
+            <div class="cards-grid">
+                <div class="card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-content">
+                        <div style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 20px;">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h3>Booking Policy</h3>
+                        <p>Flexible booking options with easy modification and cancellation terms. Book now and pay later options available.</p>
+                        <ul style="color: var(--text-light); margin-top: 15px;">
+                            <li>• Free cancellation up to 48 hours</li>
+                            <li>• Flexible date changes</li>
+                            <li>• Secure payment options</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-content">
+                        <div style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 20px;">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Safety Policy</h3>
+                        <p>Your safety is our top priority. We follow strict safety protocols and work with certified partners worldwide.</p>
+                        <ul style="color: var(--text-light); margin-top: 15px;">
+                            <li>• 24/7 emergency support</li>
+                            <li>• Comprehensive travel insurance</li>
+                            <li>• Certified local guides</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-content">
+                        <div style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 20px;">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <h3>Refund Policy</h3>
+                        <p>Fair and transparent refund policy with multiple protection options to safeguard your investment.</p>
+                        <ul style="color: var(--text-light); margin-top: 15px;">
+                            <li>• Full refund guarantees</li>
+                            <li>• Trip protection plans</li>
+                            <li>• Fast processing times</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-compass"></i> Wanderlust</h3>
+                    <p>Creating unforgettable travel experiences since 1999. Your journey starts here with the world's most trusted travel partner.</p>
+                    <div style="display: flex; gap: 15px; margin-top: 20px;">
+                        <a href="#" style="width: 40px; height: 40px; background: var(--primary-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" style="width: 40px; height: 40px; background: var(--primary-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" style="width: 40px; height: 40px; background: var(--primary-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" style="width: 40px; height: 40px; background: var(--primary-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#about">About Us</a>
+                    <a href="#services">Services</a>
+                    <a href="#tours">Tours</a>
+                    <a href="#packages">Packages</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Destinations</h3>
+                    <a href="#">Europe Tours</a>
+                    <a href="#">Asia Adventures</a>
+                    <a href="#">Africa Safari</a>
+                    <a href="#">America Exploration</a>
+                    <a href="#">Oceania Discovery</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <a href="#">Help Center</a>
+                    <a href="#policies">Travel Policies</a>
+                    <a href="#">Terms & Conditions</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Travel Insurance</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Wanderlust Adventures. All rights reserved. | Designed with ❤️ for travelers</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out',
+            once: true
+        });
+        
+
+     
+
+const mobileMenu = document.getElementById('mobileMenu');
+const navLinks = document.getElementById('navLinks');
+
+// Toggle mobile menu open/close
+mobileMenu.addEventListener('click', function () {
+    mobileMenu.classList.toggle('active');
+    navLinks.classList.toggle('show');
+
+    // Close all dropdowns if menu closes
+    if (!navLinks.classList.contains('show')) {
+        document.querySelectorAll('#navLinks .dropdown').forEach(drop => {
+            drop.classList.remove('open');
+        });
+    }
+});
+
+// Handle dropdown toggle only when clicking the ARROW
+document.querySelectorAll('#navLinks .dropdown > a').forEach(link => {
+    const arrow = link.querySelector('i'); // caret-down icon
+
+    if (arrow) {
+        arrow.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) { // Mobile only
+                e.preventDefault(); // stop About link navigation
+                e.stopPropagation(); // prevent menu from closing
+
+                const parentLi = link.parentElement;
+                parentLi.classList.toggle('open');
+            }
+        });
+    }
+});
+
+// Close menu ONLY when a final dropdown link is clicked
+document.querySelectorAll('#navLinks .dropdown-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('show');
+        mobileMenu.classList.remove('active');
+
+        // Close all dropdowns
+        document.querySelectorAll('#navLinks .dropdown').forEach(drop => {
+            drop.classList.remove('open');
+        });
+    });
+});
+
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+
+
+        // Counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-count'));
+                const increment = target / 100;
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    counter.textContent = Math.floor(current);
+                }, 20);
+            });
+        }
+
+        // Trigger counter animation when stats section is visible
+        const statsSection = document.querySelector('.stats-section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+        if (statsSection) observer.observe(statsSection);
+
+        // Progress bars animation
+        function animateProgressBars() {
+            const progressBars = document.querySelectorAll('.progress-fill');
+            progressBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                setTimeout(() => {
+                    bar.style.width = width + '%';
+                }, 500);
+            });
+        }
+
+        // Trigger progress animation when section is visible
+        const progressSection = document.querySelector('.progress-section');
+        const progressObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateProgressBars();
+                    progressObserver.unobserve(entry.target);
+                }
+            });
+        });
+        if (progressSection) progressObserver.observe(progressSection);
+
+        // Initialize Swiper
+        const swiper = new Swiper('.testimonials-carousel', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                }
+            }
+        });
+
+      // Price range slider
+const priceRange = document.getElementById('priceRange');
+const priceValue = document.getElementById('priceValue');
+
+if (priceRange && priceValue) {
+    priceRange.addEventListener('input', function () {
+        const value = this.value;
+        priceValue.textContent = `500 - ${value}`;
+    });
+}
+
+
+// Filter functionality
+function applyFilters() {
+    const destination = document.getElementById('filterDestination').value.toLowerCase();
+    const duration = document.getElementById('filterDuration').value;
+    const maxPrice = parseInt(document.getElementById('priceRange').value);
+
+    const tourCards = document.querySelectorAll('.tour-card');
+
+    // Mapping: assign 1 card to each destination
+    const destinationMap = {
+        "paris": 0,   // card index 0
+        "dubai": 1,   // card index 1
+        "bali": 2,    // card index 2
+        "tokyo": 3,   // card index 3
+        "rome": 4     // card index 4
+    };
+
+    let matchedIndex = destinationMap[destination];
+
+    tourCards.forEach((card, index) => {
+        let show = true;
+
+        // If destination selected, only show the mapped card
+        if (destination) {
+            if (index !== matchedIndex) {
+                show = false;
+            }
+        } else {
+            // No destination filter → apply other filters
+            const cardDuration = parseInt(card.getAttribute('data-duration')) || 0;
+            const cardPrice = parseInt(card.getAttribute('data-price')) || 0;
+
+            if (duration) {
+                if (duration === "1-3" && !(cardDuration >= 1 && cardDuration <= 3)) show = false;
+                if (duration === "4-7" && !(cardDuration >= 4 && cardDuration <= 7)) show = false;
+                if (duration === "8-14" && !(cardDuration >= 8 && cardDuration <= 14)) show = false;
+                if (duration === "15+" && !(cardDuration >= 15)) show = false;
+            }
+
+            if (cardPrice > maxPrice) {
+                show = false;
+            }
+        }
+
+        // Show/hide result
+        card.style.display = show ? "block" : "none";
+        card.classList.remove("expanded-card"); // reset expansion
+    });
+
+    // Hide navigation + "View All Tours" when only 1 result is visible
+    const visibleCards = [...tourCards].filter(c => c.style.display === "block");
+    const toursNav = document.querySelector(".tours-nav");
+    if (visibleCards.length === 1) {
+        toursNav.style.display = "none";
+        visibleCards[0].classList.add("expanded-card"); // expand the single card
+    } else {
+        toursNav.style.display = "flex";
+    }
+}
+// Like (heart) functionality
+document.querySelectorAll(".heart").forEach(heart => {
+  heart.addEventListener("click", () => {
+    heart.classList.toggle("liked");
+  });
+});
+// Arrow navigation for tours
+const toursContainer = document.getElementById("tourList");
+
+document.getElementById("nextBtn").addEventListener("click", () => {
+  toursContainer.scrollBy({ left: 300, behavior: "smooth" });
+});
+
+document.getElementById("prevBtn").addEventListener("click", () => {
+  toursContainer.scrollBy({ left: -300, behavior: "smooth" });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const reviews = [
+    {
+      text: "After attempting other tours... best vacation I ever went on.",
+      name: "John Doe",
+      title: "CEO, Company Name",
+      image: "images/review.jpeg"
+    },
+    {
+      text: "The Paris tour was absolutely magical! Wanderlust exceeded all our expectations.",
+      name: "Sarah Johnson",
+      title: "Traveler",
+      image: "images/review2.jpeg"
+    },
+    {
+      text: "Bali was paradise! Highly recommend Wanderlust!",
+      name: "Emily Rodriguez",
+      title: "Travel Blogger",
+      image: "images/review3.jpg"
+    }
+  ];
+
+  let currentIndex = 0;
+
+  const reviewText = document.getElementById("review-text");
+  const reviewName = document.getElementById("review-name");
+  const reviewTitle = document.getElementById("review-title");
+  const reviewImage = document.getElementById("review-image");
+
+  function updateReview() {
+    reviewText.textContent = reviews[currentIndex].text;
+    reviewName.textContent = reviews[currentIndex].name;
+    reviewTitle.textContent = reviews[currentIndex].title;
+
+    // Append timestamp to bypass cache
+    reviewImage.src = reviews[currentIndex].image + "?t=" + new Date().getTime();
+  }
+
+  document.getElementById("next-review").addEventListener("click", function () {
+    currentIndex = (currentIndex + 1) % reviews.length;
+    updateReview();
+  });
+
+  document.getElementById("prev-review").addEventListener("click", function () {
+    currentIndex = (currentIndex - 1 + reviews.length) % reviews.length;
+    updateReview();
+  });
+});
+// Back to Top button
+const backToTop = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) { // show button after scrolling 300px
+        backToTop.classList.add('visible');
+    } else {
+        backToTop.classList.remove('visible');
+    }
+});
+
+backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+
+        // Form submission
+document.querySelector('.contact-form form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const inputs = this.querySelectorAll('input, textarea, select');
+    let isValid = true;
+    let firstInvalid = null;
+
+    inputs.forEach(input => {
+        if (!input.value.trim() || input.value === "Select a destination") {
+            isValid = false;
+            input.style.borderColor = "red";   // highlight the empty field
+            if (!firstInvalid) firstInvalid = input;
+        } else {
+            input.style.borderColor = "#e2e8f0"; // reset border if valid
+        }
+    });
+
+    if (!isValid) {
+        alert("Please fill in all fields before submitting."); 
+        if (firstInvalid) firstInvalid.focus();
+        return;
+    }
+
+    // If valid → proceed
+    const submitBtn = this.querySelector('button[type="submit"]');
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+    setTimeout(() => {
+        submitBtn.innerHTML = 'Message Sent!';
+        submitBtn.style.background = '#10b981';
+        this.reset();
+
+        setTimeout(() => {
+            submitBtn.innerHTML = 'Send Message';
+            submitBtn.style.background = '';
+        }, 3000);
+    }, 2000);
+});
+
+
+// Responsiveness Script
+(() => {
+  const grid = document.querySelector('#contact .container > div[style*="grid-template-columns"]');
+  if (!grid) return;
+
+  const forms = grid.querySelectorAll('.contact-form');
+  const map   = grid.querySelector('iframe');
+
+  function layout() {
+    const w = window.innerWidth;
+
+    if (w <= 992) {
+      grid.style.gridTemplateColumns = '1fr';
+      grid.style.gap = w <= 576 ? '20px' : '30px';
+
+      forms.forEach(f => { f.style.padding = w <= 576 ? '18px' : '24px'; f.style.boxSizing = 'border-box'; });
+
+      if (map) {
+        map.style.width  = '100%';
+        map.style.height = w <= 576 ? '220px' : '280px';
+      }
+    } else {
+      grid.style.gridTemplateColumns = '1fr 1fr';
+      grid.style.gap = '40px';
+
+      forms.forEach(f => { f.style.padding = '40px'; });
+      if (map) map.style.height = '320px';
+    }
+  }
+
+  layout();
+  window.addEventListener('resize', layout);
+})();
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Add floating animation to cards on hover
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add ripple effect to buttons
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add CSS for ripple effect
+        const rippleCSS = `
+            .btn {
+                position: relative;
+                overflow: hidden;
+            }
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.4);
+                animation: ripple-animation 0.6s ease-out;
+                pointer-events: none;
+            }
+            @keyframes ripple-animation {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+        `;
+        
+        const style = document.createElement('style');
+        style.textContent = rippleCSS;
+        document.head.appendChild(style);
+
+        // Loading animation for page
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-in-out';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Add tilt effect to cards
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+            });
+        });
+
+       
+    </script>
+</body>
+</html>
+                       
